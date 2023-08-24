@@ -1,41 +1,86 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset default margin and padding */
+body, ul {
     margin: 0;
     padding: 0;
-  }
-  
-  .chat-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .message-list {
-    max-height: 300px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .input-box {
-    margin-top: 10px;
-  }
-  
-  #message-input {
+}
+
+/* Set a background color for the body */
+body {
+    background-color: #282727;
+    font-family: Arial, sans-serif;
+}
+
+/* Center the chat container */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Style the chat box */
+.chat-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 80%;
-    padding: 5px;
-  }
-  
-  #send-button {
-    width: 20%;
-    padding: 5px;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+/* Style the message list */
+.message-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+/* Style the messages */
+.message {
+    margin: 8px 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.user-message {
     background-color: #007bff;
-    color: #fff;
+    color:aqua;
+    align-self: flex-end;
+}
+
+.received-message {
+    background-color: #f5f5f5;
+    color: black;
+    align-self: flex-start;
+}
+
+/* Style the input area */
+.input-area {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+}
+
+.message-input {
+    flex: 1;
+    padding: 5px;
     border: none;
     border-radius: 5px;
+    outline: none;
+}
+
+.send-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
     cursor: pointer;
-  }
-  
+    outline: none;
+}
+
+/* Add your other existing styles below */

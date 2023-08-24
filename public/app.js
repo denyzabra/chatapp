@@ -1,62 +1,101 @@
-/**
-const messageInput = document.getElementById('message-input');
-const sendButton = document.getElementById('send-button');
-const messageList = document.getElementById('message-list');
+/*document.addEventListener('DOMContentLoaded', () => {
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
+    const messageList = document.getElementById('message-list');
+    const socket = io(); //connect to the socket.io server
 
-sendButton.addEventListener('click', () => {
-  const message = messageInput.value.trim();
-  if (message !== '') {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message');
-    messageElement.textContent = message;
-    messageList.appendChild(messageElement);
-    messageInput.value = '';
-  }
+    sendButton.addEventListener('click', () => {
+        const message = messageInput.value.trim();
+        if (message !== '') {
+            /*
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'user-message');
+            messageElement.textContent = message;
+            messageList.appendChild(messageElement);
+            messageInput.value = '';
+            scrollToBottom();
+            socket.emit('message', message)// send the message
+            messageInput.value = '';
+        }
+    });
+
+    messageInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            sendButton.click();
+        }
+    });
+
+    function scrollToBottom() {
+        messageList.scrollTop = messageList.scrollHeight;
+    }
+
+    let isScrolling = false;
+
+    messageList.addEventListener('scroll', () => {
+        isScrolling = true;
+    });
+
+    function updateScroll() {
+        if (!isScrolling) {
+            scrollToBottom();
+        }
+        isScrolling = false;
+    }
+    socket.on('message', (message) => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message','received-message');//add 'received-message class'
+        messageElement.textContent = message;
+        messageList.appendChild(messageElement);
+        scrollToBottom();
+    });
+
+    setInterval(updateScroll, 100);
 });
 */
-// Retrieve elements
-const messageInput = document.getElementById('message-input');
-const sendButton = document.getElementById('send-button');
-const messageList = document.getElementById('message-list');
+document.addEventListener('DOMContentLoaded', () => {
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
+    const messageList = document.getElementById('message-list');
+    const socket = io(); // Connect to the Socket.io server
 
-// Update Send Button Click Event
-sendButton.addEventListener('click', () => {
-  const message = messageInput.value.trim();
-  if (message !== '') {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message', 'user-message'); // Add 'user-message' class
-    messageElement.textContent = message;
-    messageList.appendChild(messageElement);
-    messageInput.value = '';
-    scrollToBottom();
-  }
+    sendButton.addEventListener('click', () => {
+        const message = messageInput.value.trim();
+        if (message !== '') {
+            socket.emit('message', message); // Send the message using Socket.io
+            messageInput.value = '';
+        }
+    });
+
+    messageInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            sendButton.click();
+        }
+    });
+
+    function scrollToBottom() {
+        messageList.scrollTop = messageList.scrollHeight;
+    }
+
+    let isScrolling = false;
+
+    messageList.addEventListener('scroll', () => {
+        isScrolling = true;
+    });
+
+    function updateScroll() {
+        if (!isScrolling) {
+            scrollToBottom();
+        }
+        isScrolling = false;
+    }
+
+    socket.on('message', (message) => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', 'received-message'); // Add 'received-message' class
+        messageElement.textContent = message;
+        messageList.appendChild(messageElement);
+        scrollToBottom();
+    });
+
+    setInterval(updateScroll, 100);
 });
-
-// Real-time Display of Messages
-messageInput.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter') {
-    sendButton.click(); // Simulate a click on the sendButton
-  }
-});
-
-// Scroll to Bottom of Message List
-function scrollToBottom() {
-  messageList.scrollTop = messageList.scrollHeight;
-}
-
-// Implement Scroll Behavior
-let isScrolling = false;
-
-messageList.addEventListener('scroll', () => {
-  isScrolling = true;
-});
-
-function updateScroll() {
-  if (!isScrolling) {
-    scrollToBottom();
-  }
-  isScrolling = false;
-}
-
-setInterval(updateScroll, 100);
-
