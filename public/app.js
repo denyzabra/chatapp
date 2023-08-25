@@ -99,3 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(updateScroll, 100);
 });
+
+//display usernames in messages
+socket.on('message', (data) => {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message','received-messsage');
+    messageElement.textContent = `${data.username}: ${data.message}`;
+    messageList.appendChild(messageElement);
+    scrollToBottom();
+})

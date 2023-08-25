@@ -77,3 +77,44 @@ io.on('connection', (socket) => {
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+//added a route for login page
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public','login.html'));
+});
+
+//user authentication
+const users =[
+    {username: 'user1', password: 'password1'},
+    {username:'user2',password: 'password2'},
+    //add more users as needed
+];
+
+//handle login POST request
+app.post('/login', (req, res) => {
+    const{username, password} = req.body;
+
+    const user = users.find(u => u.username === username && u.password === password);
+    if(user){
+        //Redirect to chat interface or another page
+        res.redirect('/');
+    } else{
+        //Redirect back to login page with an error message
+        res.redirect('/login?error=true');
+    }
+    
+});
+
+//restrict access to chat interface
+app.get('/',(req, res) => {
+    //check if user is authenticated,otherwise redirect to login page
+    if(req.isAuthenticated()){
+        res.sendFile(path.join(__dirname,'public','index.html'));
+
+    }else{
+        res.redirect('/login');
+    }
+});
+
+//display username in chat
+socket.emit('userAuthenticated', { username });
