@@ -1,0 +1,138 @@
+/* styles.css */
+
+/* Chat Container */
+.chat-container {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Message List 
+  .messages {
+    overflow-y: auto;
+    max-height: 70vh;
+    width: 80%;
+    border: 1px solid #fff;
+    padding: 10px;
+    background-color: #000;
+  }*/
+  
+  /* Individual Message */
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  /* Message Input Area *
+  .message-input {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    padding: 10px;
+    background-color: #000;
+  }
+  */
+  /* Add this to your styles.css */
+.message-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+  }
+  
+  .message-input input {
+    flex: 1;
+    padding: 5px;
+    border: none;
+  }
+  
+  .message-input button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Message Input Field *
+  .message-input input {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    background-color: #fff;
+    color: #000;
+  }
+  */
+  /* Send Button 
+  .message-input button {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }*/
+/* styles.css */
+
+/* Header */
+.header {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #000;
+  }
+  
+  /* Logout Button */
+  .logout-button {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+/* Add this to your styles.css */
+.messages {
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    overflow-y: scroll;
+    max-height: 400px;
+  }
+  
+  .message {
+    background-color: black;
+    color: white;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+      /* Add this to your styles.css */
+@media (max-width: 768px) {
+    .chat-container {
+      flex-direction: column;
+      height: 100vh;
+    }
+    
+    .messages {
+      max-height: 70vh;
+      overflow-y: scroll;
+    }
+    
+    .message-input {
+      flex-direction: column;
+      padding: 10px;
+    }
+    
+    .message-input input {
+      margin-bottom: 10px;
+    }
+  }
+  
