@@ -149,12 +149,13 @@ io.on('connection', (socket) => {
         console.log('A user disconnected');
     });
 
-    socket.on('message', (message) => {
-        io.emit('message', message); // Emit the received message to all clients
+    // Day 7 code: Listen for messages from the client
+    socket.on('testMessage', (message) => {
+        console.log('Received message from client:', message);
+        
+        // Emit the same message back to all clients
+        io.emit('testMessage', message);
     });
-
-    // Emit the 'userAuthenticated' event when a user is authenticated
-    socket.emit('userAuthenticated', { username }); // Correct placement here
 });
 
 server.listen(PORT, () => {
