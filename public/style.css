@@ -6,7 +6,7 @@ body, ul {
 
 /* Set a background color for the body */
 body {
-    background-color: #282727;
+    background-color: #c51414;
     font-family: Arial, sans-serif;
 }
 
@@ -60,7 +60,7 @@ body {
 /* Style the input area */
 .input-area {
     display: flex;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #171515;
     padding: 10px;
 }
 
